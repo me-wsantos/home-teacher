@@ -28,7 +28,7 @@ export async function studyPlanAgent(subject: string, grade: string) {
   const prompt = promptStudyPlanAgent(subject, grade);
 
     const agent = await client.agents.createAgent(model, {
-      name: "planner",
+      name: "studyPlan",
       instructions: prompt.intructions,
       tools: [codeInterpreterTool.definition],
       toolResources: codeInterpreterTool.resources,

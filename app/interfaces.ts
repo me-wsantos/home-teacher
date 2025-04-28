@@ -5,3 +5,9 @@ export interface IListVideos {
   publish: string; // formato YYYY-MM-DD
   link: string;
 }
+
+export interface ITest {
+  question: string,
+  alternatives: [{ number: number, text: string, correct: boolean }],  
+  feedback: string
+}

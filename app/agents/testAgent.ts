@@ -10,8 +10,9 @@ import {
   ToolUtility,
 } from "@azure/ai-projects";
 import { DefaultAzureCredential } from "@azure/identity";
-import { promptYoutubeContentAgent } from "../prompts/youtubeContentAgent";
-import { IListVideos } from "../interfaces";
+
+import { promptTestAgent } from "../prompts/testAgent";
+import { ITest } from "../interfaces";
 
 // Set the connection string from the environment variable
 const connectionString = process.env.NEXT_PUBLIC_PROJECT_CONNECTION_STRING || "";
@@ -22,15 +23,15 @@ if (!connectionString) {
   throw new Error("Please set the PROJECT_CONNECTION_STRING environment variable.");
 }
 
-export async function youtubeContentAgent(subject: string, level: string) {
+export async function testAgent(subject: string, level: string) {
   const client = AIProjectsClient.fromConnectionString(connectionString, new DefaultAzureCredential());
   
   // Step 1 code interpreter tool
   const codeInterpreterTool = ToolUtility.createCodeInterpreterTool([]);
-  const prompt = promptYoutubeContentAgent(subject, level);
+  const prompt = promptTestAgent(subject, level);
 
   const agent = await client.agents.createAgent(model, {
-    name: "youtubeList",
+    name: "test",
     instructions: prompt.intructions,
     tools: [codeInterpreterTool.definition],
     toolResources: codeInterpreterTool.resources,
@@ -88,7 +89,7 @@ export async function youtubeContentAgent(subject: string, level: string) {
   .replace(/\n```$/, '');
 
   // Converte a string JSON em um objeto JavaScript
-  const videosArray: IListVideos[] = JSON.parse(jsonLimpo);
+  const videosArray: ITest[] = JSON.parse(jsonLimpo);
   console.log("videos", videosArray);
 
   // 7. Delete the agent once done

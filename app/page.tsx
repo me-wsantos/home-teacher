@@ -1,41 +1,47 @@
 "use client"
 
 import { useState } from "react";
-import { studyPlanAgent, youtubeContentAgent } from "./agents";
+import useAppContext from "./appContext";
+import { studyPlanAgent, youtubeContentAgent, testAgent } from "./agents";
 import { MarkdownResponse } from "./data/markdownResponse";
 import type { MDXComponents } from "mdx/types";
 import Markdown from "react-markdown";
-import { IListVideos } from "./interfaces";
+import { IListVideos, ITest } from "./interfaces";
+import { StudyPlan } from "./components";
 
 import "./styles/studyplan.css";
 
 export default function Home() {
-  const [subject, setSubject] = useState("O cerrado brasileiro");
-  const [grade, setGrade] = useState("5 ano do ensino fundamental");
-  const [content, setContent] = useState("");
+  const [subject, setSubject] = useState("Os continentes do mundo");
+  const [grade, setGrade] = useState("5º ano do ensino fundamental");
   const [youtubeList, setYoutubeList] = useState<IListVideos[]>([]);
+  const [questionsTest, setQuestionsTest] = useState<ITest[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { activateAgents, setActivateAgents } = useAppContext();
+
   const handleClick = async () => {
-    setContent("");
-    setIsLoading(true);
+    //setIsLoading(true);
 
-    //await Promise.all([generateStudyPlan(), getYouTubeContent()]);
-    await Promise.all([getYouTubeContent()]);
-    setIsLoading(false);
+    //await Promise.all([generateStudyPlan(), getYouTubeContent(), getQuestionsTest()]);
+    //await Promise.all([generateStudyPlan()]);
+    setActivateAgents(true);
+    //setIsLoading(false);
   }
 
-  const generateStudyPlan = async () => {
-    const result = await studyPlanAgent(subject, grade);
-    setContent(result[1].text);
-  }
-
-  const getYouTubeContent = async () => {
+  /* const getYouTubeContent = async () => {
     const result = await youtubeContentAgent(subject, grade);
     const videos = JSON.parse(result);
     setYoutubeList(videos);
     console.log("videos", result);
-  }
+  } */
+  
+  /* const getQuestionsTest = async () => {
+    const result = await testAgent(subject, grade);
+    const questions = JSON.parse(result);
+    setQuestionsTest(questions);
+    console.log("questions", result);
+  } */
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -47,27 +53,16 @@ export default function Home() {
       >
         Start
       </button>
+      { JSON.stringify(activateAgents) }
 
       <div className="w-full p-16 bg-gray-500 break-words">
         {isLoading && <p className="text-lg text-gray-600">Loading...</p>}
 
-        {/** Study plan *********************************************************************************************/}
-        {content.length > 0 && (
-          <>
-            <div className="text-lg text-white">
-              <h2 className="text-2xl font-bold mb-4">Study Plan</h2>
-            </div>
-            {/* <div dangerouslySetInnerHTML={{ __html: content }} /> */}
-            <hr />
-
-            <div className="text-lg text-white break-words bg-gray-700">
-              <Markdown>{content}</Markdown>
-            </div>
-          </>
-        )}
+        <StudyPlan subject={subject} grade={grade} />
+        
 
         {/** Youtube list videos *********************************************************************************************/}
-        <div className="text-lg text-white break-words bg-gray-700">
+        {/* <div className="text-lg text-white break-words bg-gray-700">
           {youtubeList && youtubeList.length > 0 && (
             <>
               <h2 className="text-2xl font-bold mb-4">YouTube Content</h2>
@@ -82,10 +77,33 @@ export default function Home() {
               </ul>
             </>
           )}
-        </div>
+        </div> */}
 
         {/** Exercise *********************************************************************************************/}
+        {/* <div className="text-lg text-white break-words bg-gray-700">
+          {questionsTest && questionsTest.length > 0 && (
+            <>
+              <h2 className="text-2xl font-bold mb-4">Simulado</h2>
+              <ul>
+                {questionsTest.map((question, index) => (
+                  <li key={index} className="mb-2">
+                      {question.question}
+                    <ul>
+                      {question.alternatives.map((alternative, altIndex) => (
+                        <li key={altIndex} className="mb-2">
+                          <input type="radio" name={`question-${index}`} value={alternative.number} />
+                          {alternative.text}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-sm text-gray-400">Feedback: {question.feedback}</p>
 
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div> */}
 
       </div>
 
