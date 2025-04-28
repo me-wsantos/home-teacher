@@ -1,6 +1,6 @@
-export const promptStudyPlanAgent = (subject: string) => {
+export const promptStudyPlanAgent = (subject: string, grade: string) => {
   
-  const studyPlan = {
+  const agent = {
     prompt: `Preciso criar um plano de estudos lógico e organizado sobre ${subject}. Considere os seguintes tópicos: 
     1. Introdução a ${subject}, 
     2. Fundamentos de ${subject}, 
@@ -20,26 +20,5 @@ export const promptStudyPlanAgent = (subject: string) => {
     tool: "",
   }
 
-  return studyPlan;
-
-
-  /* const studyPlan = {
-    prompt: `Preciso criar um plano de estudos lógico e organizado sobre ${subject}. Considere os seguintes tópicos: 
-    1. Introdução a ${subject}, 
-    2. Fundamentos de ${subject}, 
-    3. Aplicações práticas de ${subject}.
-    4. Tópicos avançados em ${subject}.
-    Considere gastar uma hora por dia estudando e 30 minutos revisando o que você aprendeu.
-    Retorne o resultado no formato JSON de forma mais organizada possível, com os seguintes campos:
-    introducao: string,
-    fundamentos: string,
-    aplicacoes: string,
-    topicosAvancados: string,
-    tempoEstudo: string,
-    tempoRevisao: string
-    `,
-    intructions: `Você é um pedagogo e professor especialista em ${subject}.`,
-    tool: "",
-  } */
-
+  return agent;
 }

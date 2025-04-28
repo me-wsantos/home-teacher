@@ -10,7 +10,7 @@ import {
   ToolUtility,
 } from "@azure/ai-projects";
 import { DefaultAzureCredential } from "@azure/identity";
-import { promptStudyPlanAgent } from "../prompts/studyPlanAgent";
+import { promptYoutubeContentAgent } from "../prompts/youtubeContentAgent";
 
 // Set the connection string from the environment variable
 const connectionString = process.env.NEXT_PUBLIC_PROJECT_CONNECTION_STRING || "";
@@ -21,14 +21,14 @@ if (!connectionString) {
   throw new Error("Please set the PROJECT_CONNECTION_STRING environment variable.");
 }
 
-export async function studyPlanAgent(subject: string, grade: string) {
+export async function youtubeContentAgentOLD(subject: string, level: string) {
   const client = AIProjectsClient.fromConnectionString(connectionString, new DefaultAzureCredential());
   // Step 1 code interpreter tool
   const codeInterpreterTool = ToolUtility.createCodeInterpreterTool([]);
-  const prompt = promptStudyPlanAgent(subject, grade);
+  const prompt = promptYoutubeContentAgent(subject, level);
 
     const agent = await client.agents.createAgent(model, {
-      name: "planner",
+      name: "content",
       instructions: prompt.intructions,
       tools: [codeInterpreterTool.definition],
       toolResources: codeInterpreterTool.resources,
@@ -105,10 +105,9 @@ export async function studyPlanAgent(subject: string, grade: string) {
 
       response.push(messageData);
     }
-    
+
     // 7. Delete the agent once done
     await client.agents.deleteAgent(agent.id);
 
-    return response;
-
+    return JSON.stringify(response);
 }
