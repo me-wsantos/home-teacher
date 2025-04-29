@@ -1,0 +1,58 @@
+/* components/markdown.css */
+.markdown-custom h1 {
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.3rem;
+  font-size: 28px;
+}
+
+.markdown-custom h2 {
+  padding-bottom: 0.3rem;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 0;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.markdown-custom h3 {
+  padding-bottom: 0.3rem;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.markdown-custom h4 {
+  padding-bottom: 0.3rem;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.markdown-custom hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-custom code {
+  background-color: #f3f4f6;
+  color: #d97706;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+.markdown-custom pre code {
+  background-color: #27272a;
+  color: #fff;
+  display: block;
+  padding: 1em;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.markdown-custom {
+  padding: 2rem;
+  background-color: #111827;
+  color: #f3f4f6;
+  margin: 1rem 0;
+  font-size: 20px;
+}
+/* adicione mais regras conforme o elemento */

@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useAppContext from "../appContext";
 import { studyPlanAgent } from "../agents";
-import Markdown from "react-markdown";
+import MarkdownViewer from "./MarkdownViewer";
 
 import "../styles/studyplan.css";
 
@@ -17,19 +17,19 @@ export function StudyPlan({ subject, grade }: IProps) {
   const [isLoading, setIsLoading] = useState(false);
   const { activateAgents, setActivateAgents } = useAppContext();
 
-  const generateStudyPlan = async () => {
+  const generateStudyPlan = useCallback(async () => {
     const result = await studyPlanAgent(subject, grade);
     setContent(result[1].text);
     setIsLoading(false);
     setActivateAgents(false);
-  }
+  }, [subject, grade, setActivateAgents]);
 
   useEffect(() => {
     if (!activateAgents) return;
     setContent("");
     setIsLoading(true);
     generateStudyPlan();
-  }, [activateAgents])
+  }, [activateAgents, generateStudyPlan])
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -42,7 +42,7 @@ export function StudyPlan({ subject, grade }: IProps) {
           {isLoading && <p className="text-lg text-gray-600">Loading...</p>}
 
           <div className="text-lg text-white break-words bg-gray-700">
-            <Markdown>{content}</Markdown>
+            <MarkdownViewer content={content} />
           </div>
         </>
       )}

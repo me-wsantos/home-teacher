@@ -2,11 +2,6 @@
 
 import { useState } from "react";
 import useAppContext from "./appContext";
-import { studyPlanAgent, youtubeContentAgent, testAgent } from "./agents";
-import { MarkdownResponse } from "./data/markdownResponse";
-import type { MDXComponents } from "mdx/types";
-import Markdown from "react-markdown";
-import { IListVideos, ITest } from "./interfaces";
 import { StudyPlan, YoutubeVideos, Test } from "./components";
 
 import "./styles/studyplan.css";
