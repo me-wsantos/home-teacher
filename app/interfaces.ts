@@ -20,6 +20,8 @@ export interface IMessage {
 export interface IAppContext {
   subject: string
   setSubject(value: string): void
+  userQuestion: string
+  setUserQuestion(value: string): void
   activateAgents: boolean
   setActivateAgents(value: boolean): void
   messages: IMessage[],

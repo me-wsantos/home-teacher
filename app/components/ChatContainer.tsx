@@ -2,12 +2,19 @@
 import { useEffect, useRef } from "react";
 import useAppContext from "../appContext";
 import { GptMessage, MyMessage, TextMessageBox } from "./"
-import { chatService } from "../services/chatService";
+//import { chatService } from "../services/chatService";
 import { IMessage } from "../interfaces";
 import { TypingLoader } from "./loaders/TypingLoader";
+import { chatAgent } from "../agents/chatAgent";
+import { IoChatboxEllipsesOutline } from "react-icons/io5";
 
-export const ChatContainer = () => {
-  const { isLoading, setIsLoading, chatMessages, setChatMessages } = useAppContext();
+interface IProps {
+  subject: string;
+  grade: string;
+}
+
+export const ChatContainer = ({ subject, grade }: IProps) => {
+  const { isLoading, setIsLoading, chatMessages, setChatMessages, userQuestion } = useAppContext();
 
   const scrollContainerRef = useRef(null);
 
@@ -26,7 +33,25 @@ export const ChatContainer = () => {
     const updatedMessages = [...chatMessages, newUserMessage];
     setChatMessages(updatedMessages);
 
+    console.log("messages", chatMessages)
+    const context = subject + ". " + userQuestion;
+    console.log("context", context);
+
     try {
+      const result = await chatAgent(context, grade);
+      console.log("chat", result);
+
+      const newAssistantMessage = {
+        role: "assistant",
+        content: result[1]
+      };
+      setChatMessages((prev: any) => [...prev, newAssistantMessage]);
+
+      //setContent(result[1].text);
+      //setIsLoading(false);
+      //setActivateAgents(false);
+
+
       //const { data } = await chatService({ chat: updatedMessages.slice(1), perfil: profile });
 
       /* if (data && data.status !== "fail") {
@@ -57,12 +82,15 @@ export const ChatContainer = () => {
   }
 
   return (
-    <div className="flex flex-col flex-shrink-0 rounded-2xl bg-white h-[calc(100vh-400px)] p-4 border">
-      <div className="text-gray-600">
-        Chat
+    <div className="flex flex-col flex-shrink-0 rounded-2xl bg-white h-[calc(100vh-350px)] p-4 border">
+      <div className="flex items-center mt-4">
+        <IoChatboxEllipsesOutline size={32} className="text-blue-600 mr-3" />
+        <h4 className="font-bold text-lg text-blue-600 mt-0 mb-0  text-center lg:text-xl">
+          Chat
+        </h4>
       </div>
-      
-      <div 
+
+      <div
         className={`mt-24 lg:mt-6 chat-messages`}
         ref={scrollContainerRef}
       >

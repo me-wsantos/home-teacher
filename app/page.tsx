@@ -65,7 +65,7 @@ export default function Home() {
           >
             <label 
               htmlFor="subject"
-              className="text-sm text-gray-600 mb-2"
+              className="text-sm text-blue-700 font-bold mb-2"
             >Para criar seu plano de estudo, escreva um pedido completo informando o tema, o ano letivo e o público-alvo.
             </label>
             <textarea
@@ -80,7 +80,7 @@ export default function Home() {
               onChange={(e) => setSubject(e.target.value)}
             />
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-end mt-2">
             <button
               type="button"
               className={`flex justify-between items-center py-2 px-3 rounded-xl bg-blue-600 lg:px-8`}
@@ -96,7 +96,7 @@ export default function Home() {
             className={`flex flex-col flex-auto h-full p-1 overflow-hidden`}
           //className={`flex flex-col flex-auto h-full p-1 ${moduleActive >= 2 ? 'overflow-y-auto' : 'overflow-hidden'} `}
           >
-            <ChatContainer />
+            <ChatContainer subject={subject} grade={grade} />
           </div>
         </div>
       </section>

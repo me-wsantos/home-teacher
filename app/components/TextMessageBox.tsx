@@ -10,24 +10,24 @@ interface Props {
 }
 
 export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections = false}: Props) => {
-  const [message, setMessage] = useState("");
-  const { setChatMessages } = useAppContext();
+  //const [message, setMessage] = useState("");
+  const { setChatMessages, userQuestion, setUserQuestion } = useAppContext();
 
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     // Adiciona a mensagem do usuário ao array chatMessages
     const newUserMessage = {
       role: "user",
-      content: message.trim()
+      content: userQuestion.trim()
     };
 
     setChatMessages((prevMessages: any) => [...prevMessages, newUserMessage]);
 
     // Chama a função onSendMessage passada como prop
-    onSendMessage(message.trim())
+    onSendMessage(userQuestion.trim())
 
     // Limpa o campo de mensagem
-    setMessage("")
+    setUserQuestion("")
   }
 
   return (
@@ -46,8 +46,8 @@ export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections 
             autoComplete={disableCorrections ? "on" : "off"}
             autoCorrect={disableCorrections ? "on" : "off"}
             spellCheck={disableCorrections ? "true" : "false"}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            value={userQuestion}
+            onChange={(e) => setUserQuestion(e.target.value)}
           />
         </div>
       </div>
@@ -57,7 +57,7 @@ export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections 
           type="submit"
           className={`flex justify-between items-center py-2 px-3 rounded-xl bg-blue-600 lg:px-8`}
         >
-          <span className="text-white mr-2 text-sm">Send</span>
+          <span className="text-white mr-2 text-sm">Enviar</span>
           <IoIosSend color="white" size={20} />
         </button>
       </div>

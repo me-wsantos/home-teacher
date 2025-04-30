@@ -7,6 +7,7 @@ const AppContext = createContext({} as IAppContext);
 
 export const AppContextProvider = ({ children }: any) => {
   const [subject, setSubject] = useState("");
+  const [userQuestion, setUserQuestion] = useState("");
   const [activateAgents, setActivateAgents] = useState(false);
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +20,8 @@ export const AppContextProvider = ({ children }: any) => {
       activateAgents, setActivateAgents,
       messages, setMessages,
       isLoading, setIsLoading,
-      chatMessages, setChatMessages
+      chatMessages, setChatMessages,
+      userQuestion, setUserQuestion
     }}>
       {children}
     </AppContext.Provider>

@@ -5,6 +5,7 @@ import useAppContext from "../appContext";
 import { studyPlanAgent } from "../agents";
 import Markdown from "react-markdown";
 import { TypingLoader } from "./loaders/TypingLoader";
+import { GoProjectRoadmap } from "react-icons/go";
 
 import "../styles/studyplan.css";
 
@@ -36,10 +37,13 @@ export function StudyPlan({ subject, grade }: IProps) {
     <div className="hidden h-auto lg:flex flex-col justify-between items-end max-w-7xl mx-auto bg-white">
       <nav className="flex-col ml-0 w-[400px] bg-custom-blue px-0 pt-4">
         <div className="w-full flex flex-col justify-center items-center">
-          <h4 className="font-bold text-lg text-gray-600 mt-4 mb-0  text-center lg:text-xl">
-            Plano de estudo
-          </h4>
-          <div className="text-base p-4 pr-6 text-gray-600 break-words overflow-scroll overflow-x-hidden overflow-y-visible max-w-[400px] h-[calc(100vh-100px)] mt-6 mb-8">
+          <div className="flex items-center mt-4">
+            <GoProjectRoadmap size={32} className="text-blue-600 mr-3" />
+            <h4 className="font-bold text-lg text-blue-600 mt-0 mb-0  text-center lg:text-xl">
+              Plano de estudo
+            </h4>
+          </div>
+          <div className="text-[14px] p-4 pr-6 text-gray-600 break-words overflow-scroll overflow-x-hidden overflow-y-visible max-w-[400px] h-[calc(100vh-100px)] mt-6 mb-8">
             { isLoading && <TypingLoader className="bg-blue-700 p-2" description="Aguarde..." /> }
             <Markdown>{content}</Markdown>
           </div>
