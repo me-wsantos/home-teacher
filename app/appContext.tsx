@@ -1,19 +1,26 @@
 'use client'
 
 import { useState, createContext, useContext } from 'react';
-
-interface IAppContext {
-  activateAgents: boolean
-  setActivateAgents(value: boolean): void
-}
+import { IAppContext } from './interfaces';
 
 const AppContext = createContext({} as IAppContext);
 
 export const AppContextProvider = ({ children }: any) => {
+  const [subject, setSubject] = useState("");
   const [activateAgents, setActivateAgents] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [chatMessages, setChatMessages] = useState([]);
+
 
   return (
-    <AppContext.Provider value={{ activateAgents, setActivateAgents }}>
+    <AppContext.Provider value={{ 
+      subject, setSubject,
+      activateAgents, setActivateAgents,
+      messages, setMessages,
+      isLoading, setIsLoading,
+      chatMessages, setChatMessages
+    }}>
       {children}
     </AppContext.Provider>
   );
