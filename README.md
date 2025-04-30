@@ -14,7 +14,6 @@ Bem-vindo ao **Home Teacher**, o aplicativo inovador projetado para revolucionar
 - **Privacidade e Segurança**: A proteção dos dados dos estudantes é fundamental. Implementamos medidas rigorosas de segurança e privacidade para garantir que suas informações pessoais sejam tratadas de forma ética e responsável, sendo utilizadas apenas para otimizar a experiência de aprendizado dentro do Home Teacher.
 - **Responsabilidade**: Assumimos a responsabilidade pelo impacto do Home Teacher na experiência de aprendizado dos estudantes. Monitoramos continuamente o desempenho do sistema e o feedback dos usuários para garantir que esteja alinhado com nossos princípios e promovendo um aprendizado eficaz e positivo.
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Bullseye.png" alt="Bullseye" width="35" height="35" /> Nossas Soluções
 ## 💡 Recursos e Como o Home Teacher Otimiza Seus Estudos
 
 O Home Teacher oferece um conjunto de ferramentas inteligentes para transformar sua experiência de aprendizado:
@@ -74,10 +73,6 @@ Acompanhe nosso vídeo de demonstração e veja ao vivo todas as funcionalidades
   </a>
 </p>
 
-Apresentação
-
-[![ppt](https://github.com/me-wsantos/hackathon-ms/blob/main/assets/power-point-readme.png?raw=true)](https://github.com/me-wsantos/hackathon-ms/blob/main/assets/ConnectionAI.pdf)
-
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20professions/Man%20Technologist%20Medium%20Skin%20Tone.png" alt="Man Technologist Medium Skin Tone" width="35" height="35" /> Como Executar o Projeto
 
 ### **Pré-requisitos**
@@ -110,5 +105,4 @@ Para dúvidas ou sugestões, entre em contato conosco.
 
 Sinta-se à vontade para contribuir com este repositório. Abra uma issue ou envie um pull request com suas sugestões e melhorias.
 
-**Se este projeto foi útil para você, deixe uma estrela! Isso nos ajuda muito.** <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Star.png" alt="Star" width="25" height="25" />
-![capa](https://github.com/me-wsantos/hackathon-ms/blob/main/assets/capa.jpg?raw=true)
+**Se este projeto foi útil para você, deixe uma estrela! Isso nos ajuda muito.**
