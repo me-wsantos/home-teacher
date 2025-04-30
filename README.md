@@ -69,7 +69,7 @@ Acompanhe nosso vídeo de demonstração e veja ao vivo todas as funcionalidades
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=v6kudNNhla0&ab_channel=CaioArruda">
-   <img src="https://github.com/me-wsantos/home-teacher/blob/main/assets/capa.png?raw=true" alt="Youtube">
+   <img src="https://github.com/me-wsantos/home-teacher/blob/main/assets/video.png?raw=true" alt="Youtube">
   </a>
 </p>
 
