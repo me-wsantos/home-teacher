@@ -23,7 +23,8 @@ if (!connectionString) {
 
 export async function studyPlanAgent(subject: string, grade: string) {
   const client = AIProjectsClient.fromConnectionString(connectionString, new DefaultAzureCredential());
-  // Step 1 code interpreter tool
+  
+  // code interpreter tool
   const codeInterpreterTool = ToolUtility.createCodeInterpreterTool([]);
   const prompt = promptStudyPlanAgent(subject, grade);
 
@@ -34,10 +35,10 @@ export async function studyPlanAgent(subject: string, grade: string) {
       toolResources: codeInterpreterTool.resources,
     });
 
-    // Step 3 a thread
+    // thread
     const thread = await client.agents.createThread();
 
-    // Step 4 a message to thread
+    // message to thread
     await client.agents.createMessage(
       thread.id, {
       role: "user",
@@ -47,7 +48,7 @@ export async function studyPlanAgent(subject: string, grade: string) {
     // Intermission is now correlated with thread
     // Intermission messages will retrieve the message just added
 
-    // Step 5 the agent
+    // the agent
     const streamEventMessages = await client.agents.createRun(thread.id, agent.id).stream();
 
     for await (const eventMessage of streamEventMessages) {
@@ -82,7 +83,7 @@ export async function studyPlanAgent(subject: string, grade: string) {
       }
     }
 
-    // 6. Print the messages from the agent
+    // Print the messages from the agent
     const messages = await client.agents.listMessages(thread.id);
 
     // Messages iterate from oldest to newest
@@ -106,9 +107,8 @@ export async function studyPlanAgent(subject: string, grade: string) {
       response.push(messageData);
     }
     
-    // 7. Delete the agent once done
+    // Delete the agent once done
     await client.agents.deleteAgent(agent.id);
 
     return response;
-
 }

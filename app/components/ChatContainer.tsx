@@ -1,8 +1,7 @@
 "use client"
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useAppContext from "../appContext";
 import { GptMessage, MyMessage, TextMessageBox } from "./"
-//import { chatService } from "../services/chatService";
 import { IMessage } from "../interfaces";
 import { TypingLoader } from "./loaders/TypingLoader";
 import { chatAgent } from "../agents/chatAgent";
@@ -14,7 +13,8 @@ interface IProps {
 }
 
 export const ChatContainer = ({ subject, grade }: IProps) => {
-  const { isLoading, setIsLoading, chatMessages, setChatMessages, userQuestion } = useAppContext();
+  const [loadingChat, setLoadingChat] = useState(false);
+  const { chatMessages, setChatMessages, userQuestion } = useAppContext();
 
   const scrollContainerRef = useRef(null);
 
@@ -26,48 +26,23 @@ export const ChatContainer = ({ subject, grade }: IProps) => {
   }, [chatMessages]);
 
   const handlePost = async (text: string) => {
-    setIsLoading(true);
+    setLoadingChat(true);
 
     // Adiciona a mensagem do usuário
     const newUserMessage = { role: "user", content: text };
     const updatedMessages = [...chatMessages, newUserMessage];
     setChatMessages(updatedMessages);
 
-    console.log("messages", chatMessages)
     const context = subject + ". " + userQuestion;
-    console.log("context", context);
 
     try {
       const result = await chatAgent(context, grade);
-      console.log("chat", result);
 
       const newAssistantMessage = {
         role: "assistant",
         content: result[1]
       };
       setChatMessages((prev: any) => [...prev, newAssistantMessage]);
-
-      //setContent(result[1].text);
-      //setIsLoading(false);
-      //setActivateAgents(false);
-
-
-      //const { data } = await chatService({ chat: updatedMessages.slice(1), perfil: profile });
-
-      /* if (data && data.status !== "fail") {
-        const newAssistantMessage = {
-          role: "assistant",
-          content: data.response.content
-        };
-
-        setChatMessages((prev: any) => [...prev, newAssistantMessage]);
-      } else {
-        const errorMessage = {
-          role: "assistant",
-          content: "Sorry, it was not possible to answer your question. Please try again."
-        };
-        setChatMessages((prev: any) => [...prev, errorMessage]);
-      } */
 
     } catch (error) {
       console.error("Error in chat service:", error);
@@ -77,7 +52,7 @@ export const ChatContainer = ({ subject, grade }: IProps) => {
       };
       setChatMessages((prev: any) => [...prev, errorMessage]);
     } finally {
-      setIsLoading(false);
+      setLoadingChat(false);
     }
   }
 
@@ -96,14 +71,13 @@ export const ChatContainer = ({ subject, grade }: IProps) => {
       >
         <div className="flex flex-col">
 
-
           {chatMessages.map((message: IMessage, index: number) => (
             message.role === "assistant"
               ? <GptMessage key={index} text={message.content} />
               : <MyMessage key={index} text={message.content} />
           ))}
 
-          {isLoading && (
+          {loadingChat && (
             <TypingLoader className="fade-in" />
           )}
         </div>

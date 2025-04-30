@@ -1,5 +1,5 @@
 "use client"
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import useAppContext from "../appContext";
 import { IoIosSend } from "react-icons/io";
 
@@ -10,7 +10,6 @@ interface Props {
 }
 
 export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections = false}: Props) => {
-  //const [message, setMessage] = useState("");
   const { setChatMessages, userQuestion, setUserQuestion } = useAppContext();
 
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {

@@ -7,7 +7,6 @@ import {
 import { DefaultAzureCredential } from "@azure/identity";
 
 import { promptChatAgent } from "../prompts/chatAgent";
-import { ITest } from "../interfaces";
 
 // Set the connection string from the environment variable
 const connectionString = process.env.NEXT_PUBLIC_PROJECT_CONNECTION_STRING || "";
@@ -21,7 +20,7 @@ if (!connectionString) {
 export async function chatAgent(subject: string, level: string) {
   const client = AIProjectsClient.fromConnectionString(connectionString, new DefaultAzureCredential());
   
-  // Step 1 code interpreter tool
+  // code interpreter tool
   const codeInterpreterTool = ToolUtility.createCodeInterpreterTool([]);
   const prompt = promptChatAgent(subject, level);
 
@@ -32,12 +31,11 @@ export async function chatAgent(subject: string, level: string) {
     toolResources: codeInterpreterTool.resources,
   });
 
-  // Step 3 a thread
+  // thread
   const thread = await client.agents.createThread();
 
-  // Step 4 a message to thread
-
-  const message = await client.agents.createMessage(thread.id, {
+  // message to thread
+  await client.agents.createMessage(thread.id, {
     role: "user",
     content: prompt.prompt
   });
@@ -73,17 +71,7 @@ export async function chatAgent(subject: string, level: string) {
     }
   }
 
-  const data = response[1];
-
-  // Remove a parte "```json" do início e "```" do final
-/*   const jsonLimpo = jsonString
-  .replace(/^```json\n/, '')
-  .replace(/\n```$/, ''); */
-
-  // Converte a string JSON em um objeto JavaScript
-  //const videosArray: ITest[] = JSON.parse(data);
-
-  // 7. Delete the agent once done
+  // Delete the agent once done
   await client.agents.deleteAgent(agent.id);
 
   return response;

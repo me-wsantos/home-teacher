@@ -2,11 +2,6 @@
 
 import {
   AIProjectsClient,
-  DoneEvent,
-  ErrorEvent,
-  isOutputOfType,
-  MessageStreamEvent,
-  RunStreamEvent,
   ToolUtility,
 } from "@azure/ai-projects";
 import { DefaultAzureCredential } from "@azure/identity";
@@ -26,7 +21,7 @@ if (!connectionString) {
 export async function testAgent(subject: string, level: string) {
   const client = AIProjectsClient.fromConnectionString(connectionString, new DefaultAzureCredential());
   
-  // Step 1 code interpreter tool
+  // code interpreter tool
   const codeInterpreterTool = ToolUtility.createCodeInterpreterTool([]);
   const prompt = promptTestAgent(subject, level);
 
@@ -37,16 +32,15 @@ export async function testAgent(subject: string, level: string) {
     toolResources: codeInterpreterTool.resources,
   });
 
-  // Step 3 a thread
+  // thread
   const thread = await client.agents.createThread();
 
-  // Step 4 a message to thread
+  // message to thread
 
   const message = await client.agents.createMessage(thread.id, {
     role: "user",
     content: prompt.prompt
   });
-  console.log(`Created message, message ID: ${message.id}`);
     
   // Create run
   let run = await client.agents.createRun(thread.id, agent.id);
@@ -61,21 +55,16 @@ export async function testAgent(subject: string, level: string) {
     run = await client.agents.getRun(thread.id, run.id);
   }
   
-  console.log(`Run completed with status: ${run.status}`);
-    
   // Retrieve messages
   const messages = await client.agents.listMessages(thread.id);
   const response = [];
 
   // Display messages
   for (const dataPoint of messages.data.reverse()) {
-    //console.log(`${dataPoint.createdAt} - ${dataPoint.role}:`);
-    
     for (const contentItem of dataPoint.content) {
       if (contentItem.type === "text") {
         if ('text' in contentItem && contentItem.text) {
           response.push(contentItem.text.value);
-          //console.log(contentItem.text.value);
         }
       }
     }
@@ -90,9 +79,8 @@ export async function testAgent(subject: string, level: string) {
 
   // Converte a string JSON em um objeto JavaScript
   const videosArray: ITest[] = JSON.parse(jsonLimpo);
-  console.log("videos", videosArray);
 
-  // 7. Delete the agent once done
+  // Delete the agent once done
   await client.agents.deleteAgent(agent.id);
 
   return JSON.stringify(videosArray);

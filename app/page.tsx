@@ -2,22 +2,16 @@
 
 import { useState } from "react";
 import useAppContext from "./appContext";
-import { studyPlanAgent, youtubeContentAgent, testAgent } from "./agents";
-import { MarkdownResponse } from "./data/markdownResponse";
-import type { MDXComponents } from "mdx/types";
-import Markdown from "react-markdown";
-import { IListVideos, ITest } from "./interfaces";
-import { StudyPlan, YoutubeVideos, Test, ChatContainer } from "./components";
+import { StudyPlan, YoutubeVideos, ChatContainer } from "./components";
+import { FaGithub } from "react-icons/fa";
+import { PiStudent } from "react-icons/pi";
 
 import "./styles/studyplan.css";
 import Link from "next/link";
 
 export default function Home() {
-  //const [subject, setSubject] = useState("");
   const [grade, setGrade] = useState("5º ano do ensino fundamental");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const { subject, setSubject, chatMessages, activateAgents, setActivateAgents, setChatMessages } = useAppContext();
+  const { subject, setSubject, setActivateAgents, setChatMessages } = useAppContext();
 
   const handleClick = async () => {
     setActivateAgents(true);
@@ -27,31 +21,27 @@ export default function Home() {
     };
 
     setChatMessages((prevMessages: any) => [...prevMessages, newUserMessage]);
-
   }
-
 
   return (
     <main className="h-screen w-full flex flex-row mt-0 bg-gray-100 overflow-hidden">
       <StudyPlan subject={subject} grade={grade} />
-      <section className="mx-3 sm:mx-20 flex flex-col w-full p-5 mt-4 rounded-3xl">
+      <section className="mx-3 sm:mx-20 flex flex-col w-full p-5 mt-0 rounded-3xl">
         {/* <NavbarMobile /> */}
-        <div className="w-full h-12 px-4 pt-0 flex justify-between items-center max-w-[110rem] mx-auto bg-gray-200 xl:px-6 xl:justify-end">
+        <div className="w-full h-12 px-4 pt-0 flex justify-between items-center max-w-[110rem] mb-4 mx-auto bg-gray-200 xl:px-0 xl:justify-between">
           <div className="mx-4 flex items-center gap-2">
             <Link href="https://hackbox.microsoft.com/hackathons/Innovation-Challenge-March-2025/project/91588" target="_blank" title="Open Hackbox project">
               <div className="flex items-center gap-2">
-                {/* <MdOutlineWebAsset size={20} /> */}
-                {/* <span className="text-sm text-black">{ JSON.stringify(chatMessages) }</span> */}
+                <PiStudent size={24} color="#000000" />
+                <span className="text-lg text-black font-bold">Home Teacher - <small className="font-thin text-gray-600">Seu tutor pessoal inteligente</small> </span>
               </div>
             </Link>
           </div>
 
-          
-
           <div className="mx-4 flex items-center gap-2">
-            <Link href="https://github.com/me-wsantos/hackathon-ms" target="_blank" title="Open Github repository">
+            <Link href="https://github.com/me-wsantos/home-teacher.git" target="_blank" title="Open Github repository">
               <div className="flex items-center gap-2">
-                {/* <FaGithub size={20} /> */}
+                <FaGithub size={20} color="#000000" />
                 <span className="text-sm text-black">Github</span>
               </div>
             </Link>
@@ -61,9 +51,8 @@ export default function Home() {
         <div className="flex flex-col flex-shrink-0 rounded-2xl bg-white h-[200px] p-4 border">
           <div
             className={`flex flex-col flex-auto h-full p-1 overflow-hidden`}
-          //className={`flex flex-col flex-auto h-full p-1 ${moduleActive >= 2 ? 'overflow-y-auto' : 'overflow-hidden'} `}
           >
-            <label 
+            <label
               htmlFor="subject"
               className="text-sm text-blue-700 font-bold mb-2"
             >Para criar seu plano de estudo, escreva um pedido completo informando o tema, o ano letivo e o público-alvo.
@@ -94,7 +83,6 @@ export default function Home() {
         <div className="flex flex-row h-full mt-6">
           <div
             className={`flex flex-col flex-auto h-full p-1 overflow-hidden`}
-          //className={`flex flex-col flex-auto h-full p-1 ${moduleActive >= 2 ? 'overflow-y-auto' : 'overflow-hidden'} `}
           >
             <ChatContainer subject={subject} grade={grade} />
           </div>

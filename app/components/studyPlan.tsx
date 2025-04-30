@@ -15,9 +15,9 @@ interface IProps {
 }
 
 export function StudyPlan({ subject, grade }: IProps) {
+  const [isLoading, setIsLoading] = useState(false);
   const [content, setContent] = useState("");
-  const { activateAgents, setActivateAgents, isLoading, setIsLoading } = useAppContext();
-
+  const { activateAgents, setActivateAgents } = useAppContext();
 
   const generateStudyPlan = async () => {
     const result = await studyPlanAgent(subject, grade);
@@ -44,7 +44,7 @@ export function StudyPlan({ subject, grade }: IProps) {
             </h4>
           </div>
           <div className="text-[14px] p-4 pr-6 text-gray-600 break-words overflow-scroll overflow-x-hidden overflow-y-visible max-w-[400px] h-[calc(100vh-100px)] mt-6 mb-8">
-            { isLoading && <TypingLoader className="bg-blue-700 p-2" description="Aguarde..." /> }
+            { isLoading && <TypingLoader className="bg-white p-2" description="Aguarde..." /> }
             <Markdown>{content}</Markdown>
           </div>
         </div>

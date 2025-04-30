@@ -14,8 +14,9 @@ interface IProps {
 }
 
 export function YoutubeVideos({ subject, grade }: IProps) {
+  const [isLoading, setIsLoading] = useState(false);
   const [youtubeList, setYoutubeList] = useState<IListVideos[]>([]);
-  const { activateAgents, setActivateAgents, isLoading, setIsLoading } = useAppContext();
+  const { activateAgents, setActivateAgents } = useAppContext();
 
   const getYouTubeContent = async () => {
     const result = await youtubeContentAgent(subject, grade);
@@ -43,7 +44,7 @@ export function YoutubeVideos({ subject, grade }: IProps) {
             </h4>
           </div>
           <div className="text-base p-4 overflow-scroll overflow-x-hidden overflow-y-visible h-[calc(100vh-100px)] mt-0 mb-8 flex flex-col items-center">
-            {isLoading && <TypingLoader className="bg-blue-700 p-2" description="Aguarde..." />}
+            {isLoading && <TypingLoader className="bg-white p-2" description="Aguarde..." />}
 
             {youtubeList && youtubeList.length > 0 && (
               youtubeList.map((video, index) => (

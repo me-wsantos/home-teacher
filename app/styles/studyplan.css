@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .div-study-plan {
-  overflow: visible;
-  overflow-y: visible;
-  overflow-x: hidden;
-} */
-
 h1{
   font-size: 1.2em;
   font-weight: bold;
