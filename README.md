@@ -1,5 +1,5 @@
 # Home Teacher - Seu Tutor Pessoal Inteligente
-![capa](https://github.com/me-wsantos/hackathon-ms/blob/main/assets/capa.jpg?raw=true)
+![capa](https://github.com/me-wsantos/home-teacher/blob/main/assets/capa.png?raw=true)
 
 Bem-vindo ao **Home Teacher**, o aplicativo inovador projetado para revolucionar a maneira como você estuda! Imagine ter um assistente pessoal disponível 24 horas por dia, pronto para elaborar planos de estudo personalizados, recomendar os vídeos mais relevantes do YouTube para o seu aprendizado e, ainda por cima, tirar suas dúvidas sobre o assunto em tempo real através de um chatbot inteligente. O Home Teacher utiliza o poder dos agentes inteligentes da Microsoft Azure para oferecer uma experiência de aprendizado dinâmica, eficiente e totalmente adaptada às suas necessidades. Prepare-se para otimizar seus estudos e alcançar seus objetivos acadêmicos com o Home Teacher ao seu lado!
 
@@ -40,7 +40,7 @@ Com o Home Teacher, você tem um parceiro de estudos inteligente e completo, pro
 
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png" alt="Robot" width="35" height="35" /> Arquitetura do Projeto
 
-![arquitecture](https://github.com/me-wsantos/hackathon-ms/blob/main/assets/arquitecture.png?raw=true)
+![arquitecture](https://github.com/me-wsantos/home-teacher/blob/main/assets/arquitetura.png?raw=true)
 
 
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Flying%20Saucer.png" alt="Flying Saucer" width="35" height="35" /> Tecnologias Utilizadas
@@ -54,7 +54,7 @@ A solução consiste nos seguintes componentes principais:
 - **TypeScript**: Superset do JavaScript que adiciona tipagem estática opcional, permitindo a detecção de erros durante o desenvolvimento e melhorando a manutenção do código.
 - **Tailwind CSS**: Framework CSS utilitário que oferece classes pré-definidas para estilização rápida e consistente de elementos HTML.
 
-![front](https://github.com/me-wsantos/hackathon-ms/blob/main/assets/front.png?raw=true)
+![front](https://github.com/me-wsantos/home-teacher/blob/main/assets/front.png?raw=true)
 
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Ferris%20Wheel.png" alt="Ferris Wheel" width="40" height="40" /> Fluxo de Operação
 1. **Solicitação do conteúdo a ser pesquisado**.
@@ -69,7 +69,7 @@ Acompanhe nosso vídeo de demonstração e veja ao vivo todas as funcionalidades
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=v6kudNNhla0&ab_channel=CaioArruda">
-   <img src="https://github.com/me-wsantos/hackathon-ms/blob/main/assets/capa.png?raw=true" alt="Youtube">
+   <img src="https://github.com/me-wsantos/home-teacher/blob/main/assets/capa.png?raw=true" alt="Youtube">
   </a>
 </p>
 
@@ -105,4 +105,4 @@ Para dúvidas ou sugestões, entre em contato conosco.
 
 Sinta-se à vontade para contribuir com este repositório. Abra uma issue ou envie um pull request com suas sugestões e melhorias.
 
-**Se este projeto foi útil para você, deixe uma estrela! Isso nos ajuda muito.**
+**Se este projeto foi útil para você, deixe uma estrela! Isso nos ajuda muito.** <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Star.png" alt="Star" width="25" height="25" />
