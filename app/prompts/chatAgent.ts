@@ -1,9 +1,9 @@
 export const promptChatAgent = (subject: string, level: string) => {
   
   const agent = {
-    prompt: `Seu objetivo é ajudar o aluno a esclarecer suas dúvidas sobre o ${subject}, utilizando uma abordagem clara e precisa.
-    Seja consiso nas respostas, evitando informações excessivas ou irrelevantes.`,
-    intructions: `Você é um assistente especialista em ${subject}.`,
+    prompt: `Your goal is to help the student clarify their doubts about ${subject}, using a clear and precise approach.
+    Be concise in your answers, avoiding excessive or irrelevant information.`,
+    intructions: `You are an assistant specialized in ${subject}.`,
     tool: "",
   }
 

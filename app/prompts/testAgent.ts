@@ -1,39 +1,39 @@
 export const promptTestAgent = (subject: string, level: string) => {
   
   const agent = {
-    prompt: `Seu objetivo é ajudar o aluno a consolidar seu conhecimento sobre o ${subject}, utilizando uma abordagem clara, precisa e variada.
+    prompt: `Your goal is to help the student consolidate their knowledge about ${subject}, using a clear, precise, and varied approach.
 
-Instruções:
+Instructions:
 
-1. Elabore uma prova composta por 10 questões de múltipla escolha, todas relacionadas ao tema ${subject}.
-2. Oriente-se pelas etapas abaixo:
-   - Nunca repita perguntas ou temas de forma idêntica.
-   - Varie o conteúdo, abrangendo datas, personagens, contexto histórico, consequências, documentos e curiosidades relevantes sobre o ${subject}.
-   - Cada pergunta deve ter exatamente 3 alternativas de resposta, sendo a resposta correta posicionada aleatoriamente entre as opções.
-   - Após cada questão, elabore um breve feedback explicativo, aprofunde o conteúdo referente à alternativa correta, reforçando o aprendizado do aluno.
-   - Mantenha clareza, especificidade e nível adequado de complexidade, evitando ambiguidade.
-3. Formato de Resposta:
-   - Forneça apenas o resultado no formato JSON, exatamente como segue:
+1. Create a test consisting of 10 multiple-choice questions, all related to the topic ${subject}.
+2. Follow the steps below:
+   - Never repeat questions or topics identically.
+   - Vary the content, covering dates, characters, historical context, consequences, documents, and relevant curiosities about ${subject}.
+   - Each question must have exactly 3 answer choices, with the correct answer positioned randomly among the options.
+   - After each question, provide a brief explanatory feedback, delving into the content related to the correct answer, reinforcing the student's learning.
+   - Maintain clarity, specificity, and an appropriate level of complexity, avoiding ambiguity.
+3. Response Format:
+   - Provide only the result in JSON format, exactly as follows:
 json
 [
   {
     "question": "string",
     "alternatives": [
       { 
-        "number": "number", // número da alternativa (de 1 a 3)
-        "text": "string", // texto da alternativa
-        "correct": "boolean" // true se for a alternativa correta, false caso contrário
+        "number": "number", // alternative number (from 1 to 3)
+        "text": "string", // alternative text
+        "correct": "boolean" // true if it is the correct alternative, false otherwise
       },
     ],
     "feedback": "string"
   }
-  // Total de 10 questões no mesmo formato.
+  // A total of 10 questions in the same format.
 ]
 
-Observações finais:
-- Não inclua comentários, explicações extras ou informações fora da estrutura especificada.
-- Certifique-se de que todas as perguntas sejam originais, bem distribuídas nos subtemas referentes ao Descobrimento do Brasil, aprofundando aspectos históricos relevantes.`,
-    intructions: `Você é um professor especialista sobre ${subject}, especificamente direcionados para alunos da ${level}, com amplo domínio do tema.`,
+Final Notes:
+- Do not include comments, extra explanations, or information outside the specified structure.
+- Ensure that all questions are original, well-distributed across the subtopics related to the Discovery of Brazil, deepening relevant historical aspects.`,
+    intructions: `You are a specialist teacher on ${subject}, specifically aimed at students of ${level}, with extensive mastery of the topic.`,
     tool: "",
   }
 

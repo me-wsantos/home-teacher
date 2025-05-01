@@ -27,7 +27,7 @@ export function CardVideo({ key, title, channel, visualizations, publish, url }:
         </a>
         <p className="text-sm text-gray-500 mt-1">{channel}</p>
         <p className="text-sm text-gray-500 mt-1">
-          {visualizations.toLocaleString('pt-BR')} visualizações • {new Date(publish).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+          {visualizations.toLocaleString('pt-BR')} visualizations • {publish}
         </p>
       </div>
     </div>

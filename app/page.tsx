@@ -17,7 +17,7 @@ export default function Home() {
     setActivateAgents(true);
     const newUserMessage = {
       role: "user",
-      content: `OK. Vou lhe ajudar a criar um plano de estudo sobre ${subject.trim()}`
+      content: `OK. I will help you create a study plan about ${subject.trim()}`
     };
 
     setChatMessages((prevMessages: any) => [...prevMessages, newUserMessage]);
@@ -33,7 +33,7 @@ export default function Home() {
             <Link href="https://hackbox.microsoft.com/hackathons/Innovation-Challenge-March-2025/project/91588" target="_blank" title="Open Hackbox project">
               <div className="flex items-center gap-2">
                 <PiStudent size={24} color="#000000" />
-                <span className="text-lg text-black font-bold">Home Teacher - <small className="font-thin text-gray-600">Seu tutor pessoal inteligente</small> </span>
+                <span className="text-lg text-black font-bold">Home Teacher - <small className="font-thin text-gray-600">Your Smart Personal Tutor</small> </span>
               </div>
             </Link>
           </div>
@@ -55,7 +55,7 @@ export default function Home() {
             <label
               htmlFor="subject"
               className="text-sm text-blue-700 font-bold mb-2"
-            >Para criar seu plano de estudo, escreva um pedido completo informando o tema, o ano letivo e o público-alvo.
+            >To create your study plan, write a complete request informing the topic, school year, and target audience.
             </label>
             <textarea
               id="subject"
@@ -64,18 +64,18 @@ export default function Home() {
               cols={50}
               autoFocus
               className="flex w-full border rounded-xl text-base text-gray-800 focus:outline-none focus:border-x-indigo-300 p-2"
-              placeholder="Por favor, elabore um plano de estudo sobre raiz quadrada para alunos do 5º ano do ensino fundamental.'"
+              placeholder="Please create a study plan about square roots for 5th-grade elementary school students."
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
             />
-          </div>
+            </div>
           <div className="flex justify-end mt-2">
             <button
               type="button"
               className={`flex justify-between items-center py-2 px-3 rounded-xl bg-blue-600 lg:px-8`}
               onClick={() => handleClick()}
             >
-              <span className="text-white mr-2 text-sm">Gerar plano de estudo</span>
+                <span className="text-white mr-2 text-sm">Generate study plan</span>
             </button>
           </div>
         </div>

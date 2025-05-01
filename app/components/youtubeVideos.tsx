@@ -40,11 +40,11 @@ export function YoutubeVideos({ subject, grade }: IProps) {
           <div className="flex items-center mt-4">
             <CiYoutube size={32} className="text-blue-600 mr-3" />
             <h4 className="font-bold text-lg text-blue-600 mt-0 mb-0  text-center lg:text-xl">
-              Vídeos do YouTube
+              YouTube videos
             </h4>
           </div>
           <div className="text-base p-4 overflow-scroll overflow-x-hidden overflow-y-visible h-[calc(100vh-100px)] mt-0 mb-8 flex flex-col items-center">
-            {isLoading && <TypingLoader className="bg-white p-2" description="Aguarde..." />}
+            {isLoading && <TypingLoader className="bg-white p-2" description="Wait..." />}
 
             {youtubeList && youtubeList.length > 0 && (
               youtubeList.map((video, index) => (

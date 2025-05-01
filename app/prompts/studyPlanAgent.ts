@@ -1,22 +1,22 @@
 export const promptStudyPlanAgent = (subject: string, grade: string) => {
   
   const agent = {
-    prompt: `Preciso criar um plano de estudos lógico e organizado sobre ${subject}. Considere os seguintes tópicos: 
-    1. Introdução a ${subject}, 
-    2. Fundamentos de ${subject}, 
-    3. Aplicações práticas de ${subject}.
-    4. Tópicos avançados em ${subject}.
-    Considere gastar uma hora por dia estudando e 30 minutos revisando o que você aprendeu.
-    Use o método de Paretto 80/20 para priorizar os tópicos mais importantes e relevantes.
-    Retorne o resultado no formato markdown de forma mais organizada possível, na seguinte estrutura:
-    1. Introdução:
-    2. Fundamentos: crie subtópicos e explique cada um deles.
-    3. Aplicações práticas: crie subtópicos e explique cada um deles.
-    4. Tópicos avançados : crie subtópicos e explique cada um deles.
+    prompt: `I need to create a logical and organized study plan about ${subject}. Consider the following topics: 
+    1. Introduction to ${subject}, 
+    2. Fundamentals of ${subject}, 
+    3. Practical applications of ${subject}.
+    4. Advanced topics in ${subject}.
+    Consider spending one hour per day studying and 30 minutes reviewing what you have learned.
+    Use the Pareto 80/20 method to prioritize the most important and relevant topics.
+    Return the result in markdown format as organized as possible, in the following structure:
+    1. Introduction:
+    2. Fundamentals: create subtopics and explain each of them.
+    3. Practical applications: create subtopics and explain each of them.
+    4. Advanced topics: create subtopics and explain each of them.
 
-    Para cada item da lista, crie subtópicos com no máximo 5 temas mais relevantes, explique cada um deles e tempo estimado de estudo.
+    For each item in the list, create subtopics with a maximum of 5 most relevant themes, explain each of them, and provide an estimated study time.
     `,
-    intructions: `Você é um pedagogo e professor especialista em ${subject}.`,
+    intructions: `You are a pedagogue and a teacher specializing in ${subject}.`,
     tool: "",
   }
 

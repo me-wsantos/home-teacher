@@ -1,43 +1,43 @@
 export const promptYoutubeContentAgent = (subject: string, level: string) => {
   
   const agent = {
-    prompt: `Sua tarefa é identificar e listar os melhores vídeos educacionais sobre ${subject}, especificamente direcionados para alunos da ${level}.
-    Siga as orientações abaixo:
-    1. Critérios de Seleção:
-      - O vídeo deve abordar ${subject} de forma didática, acessível e adequada à faixa etária da ${level}.
-      - Considere a quantidade de visualizações e de likes como critérios principais de avaliação.
-      - Priorize vídeos com linguagem simples, exemplos práticos e recursos visuais que facilitem a compreensão.
-      - Certifique-se de que o conteúdo do vídeo seja livre de linguagem inapropriada e alinhado ao currículo básico de matemática para essa série.
-      - Avalie a clareza do apresentador e a qualidade da produção como pontos diferenciais.
+    prompt: `Your task is to identify and list the best educational videos about ${subject}, specifically targeted at ${level} students.
+    Follow the guidelines below:
+    1. Selection Criteria:
+      - The video must address ${subject} in a didactic, accessible way and be appropriate for the ${level} age group.
+      - Consider the number of views and likes as the main evaluation criteria.
+      - Prioritize videos with simple language, practical examples, and visual resources that facilitate understanding.
+      - Ensure the video content is free of inappropriate language and aligned with the basic curriculum for this grade level.
+      - Evaluate the presenter's clarity and production quality as differentiating factors.
 
-    2. Formato de Resposta:
-      - Retorne o resultado em formato JSON, seguindo exatamente a estrutura abaixo:
+    2. Response Format:
+      - Return the result in JSON format, following exactly the structure below:
       [
         {
           "title": "string",
           "channel": "string",
           "visualizations": number,
-          "publish": "string (formato YYYY-MM-DD)"
+          "publish": "string (format YYYY-MM-DD)"
           "link": "string",
         }
-        // até 10 itens
+        // up to 10 items
       ]
       
 
-    3. Especificações:
-      - Limite sua lista a no máximo 10 vídeos.
-      - Ordene os vídeos em ordem decrescente de relevância (considerando visualizações e likes).
-      - Certifique-se de que cada item contenha todas as informações requisitadas e que os dados estejam corretos e atualizados.
-      - Não inclua vídeos repetidos, que não estejam claramente vinculados ao conteúdo solicitado ou que não tenham a url válida.
+    3. Specifications:
+      - Limit your list to a maximum of 10 videos.
+      - Order the videos in descending order of relevance (considering views and likes).
+      - Ensure each item contains all the requested information and that the data is correct and up-to-date.
+      - Do not include duplicate videos, videos not clearly related to the requested content, or videos with invalid URLs.
 
-    4. Critérios de qualidade:
-      - Priorize vídeos brasileiros ou em língua portuguesa, salvo indisponibilidade.
-      - Evite vídeos excessivamente longos (sugestão: até 20 minutos).
-      - Inclua no mínimo dois vídeos de canais educativos reconhecidos.
+    4. Quality Criteria:
+      - Prioritize Brazilian videos or videos in Portuguese, unless unavailable.
+      - Avoid excessively long videos (suggestion: up to 20 minutes).
+      - Include at least two videos from recognized educational channels.
 
-    Caso não consiga encontrar vídeos com os critérios acima, retorne uma lista fake no formato JSON que simule o resultado esperado.
-    Por favor, forneça apenas a lista no formato JSON conforme especificado, sem adicionar comentários ou explicações extras.`,
-    intructions: `Você é um especialista em curadoria de conteúdo no YouTube com foco em educação.`,
+    If you cannot find videos meeting the above criteria, return a fake list in JSON format simulating the expected result.
+    Please provide only the list in JSON format as specified, without adding extra comments or explanations.`,
+    intructions: `You are a specialist in curating YouTube content focused on education.`,
     tool: "",
   }
 
